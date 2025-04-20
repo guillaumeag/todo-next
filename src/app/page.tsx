@@ -1,7 +1,8 @@
 import { db } from "@/db/drizzle";
 import { todos } from "@/db/schema";
+import Todos from "@/app/ui/todos";
 
-const todo_items = await db.select().from(todos);
+const data = db.select().from(todos);
 
 export default function Home() {
   return (
@@ -12,12 +13,7 @@ export default function Home() {
           <p className="text-current/80">This is a todo list app using Next.js</p>
           
           <ul className="text-left mt-8">
-            {todo_items.map((todo) => (
-              <li key={todo.id} className="py-1">
-                <span className="text-lg mr-2">{todo.title}</span>
-                <span className="text-sm text-gray-500">{todo.completed ? "Completed" : "Not Completed"}</span>
-              </li>
-            ))}
+            <Todos todos={data} />
           </ul>
         </div>
       </div>
