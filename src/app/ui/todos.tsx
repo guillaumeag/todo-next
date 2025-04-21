@@ -28,14 +28,14 @@ const Todos: FC<Props> = ({ todos }) => {
         <li key={item.id} className="py-1">
           <input
             type="checkbox"
-            className="mr-2 cursor-pointer size-4"
+            className="inline-block align-middle mr-2 cursor-pointer size-4"
             defaultChecked={item.completed}
             onChange={() => handleToggleCompleted(item.id, !item.completed)}
           />
-          <span className={`text-lg mr-2 ${item.completed ? 'line-through decoration-2' : '' }`}>{item.title}</span>
+          <span className={`inline-block align-middle text-lg mr-2 ${item.completed ? 'line-through decoration-2' : '' }`}>{item.title}</span>
           <button
             onClick={() => handleDelete(item.id)}
-            className="text-red-200 hover:text-red-500 cursor-pointer"
+            className="inline-block align-middle text-red-200 hover:text-red-500 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
