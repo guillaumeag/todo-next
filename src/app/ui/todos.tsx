@@ -35,7 +35,7 @@ const Todos: FC<Props> = ({ todos }) => {
           <span className={`inline-block align-middle text-xl mr-2 ${item.completed ? 'line-through decoration-2' : '' }`}>{item.title}</span>
           <button
             onClick={() => handleDelete(item.id)}
-            className="inline-block align-middle text-red-200 hover:text-red-500 cursor-pointer"
+            className="inline-block align-middle bg-red-100 text-white hover:bg-red-500 rounded-full p-1 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
