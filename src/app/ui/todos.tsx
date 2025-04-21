@@ -5,7 +5,7 @@ import { use } from 'react';
 export default function Todos({
     todos,
   }: {
-    todos: Promise<{ id: string; title: string, completed: boolean, created_at: Date, update_at: Date }[]>
+    todos: Promise<{ id: number; title: string, completed: boolean, created_at: Date, update_at: Date }[]>
   }) {
 
   const todo_items = use(todos);

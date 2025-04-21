@@ -1,7 +1,17 @@
 import { db } from "@/db/drizzle";
 import Todos from "@/app/ui/todos";
 
-const data = db.query.todos.findMany();
+// Get all todo items from the database
+const allTodos = await db.query.todos.findMany();
+
+// Transform the data to match the expected Promise type
+const transformedTodos = allTodos.map(todo => ({
+  id: todo.id,
+  title: todo.title,
+  completed: todo.completed,
+  created_at: todo.created_at,
+  update_at: todo.updated_at,
+}));
 
 export default function Home() {
   return (
@@ -12,7 +22,7 @@ export default function Home() {
           <p className="text-current/80">This is a todo list app using Next.js</p>
           
           <ul className="text-left mt-8">
-            <Todos todos={data} />
+            <Todos todos={Promise.resolve(transformedTodos)} />
           </ul>
         </div>
       </div>
