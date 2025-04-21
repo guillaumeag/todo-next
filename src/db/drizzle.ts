@@ -5,4 +5,4 @@ import { todos } from "@/db/schema/todos";
 
 config({ path: ".env" });
 
-export const db = drizzle(process.env.DATABASE_URL!, { schema: { todos } });
+export const db = drizzle({ connection: { url: process.env.DATABASE_URL! }, schema: { todos } });
