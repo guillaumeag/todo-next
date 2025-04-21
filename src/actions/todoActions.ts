@@ -20,7 +20,7 @@ export async function createTodo(formData: FormData) {
   };
   
   // Insert the new todo into the database
-  const newTodo = await db.insert(todos).values(todo);
+  await db.insert(todos).values(todo);
 
   // Revalidate the path to refresh the data
   revalidatePath('/');
@@ -28,7 +28,7 @@ export async function createTodo(formData: FormData) {
 
 export async function deleteTodo(id: number) {
   // Delete todo item from the database using its id
-  const todo = await db.delete(todos).where(eq(todos.id, id));
+  await db.delete(todos).where(eq(todos.id, id));
   
   // Revalidate the path to refresh the data
   revalidatePath("/");
@@ -36,7 +36,7 @@ export async function deleteTodo(id: number) {
 
 export async function completeTodo(id: number, completed: boolean) {
   // Delete todo item from the database using its id
-  const todo = await db.update(todos).set({completed: completed}).where(eq(todos.id, id));
+  await db.update(todos).set({completed: completed}).where(eq(todos.id, id));
   
   // Revalidate the path to refresh the data
   revalidatePath("/");
