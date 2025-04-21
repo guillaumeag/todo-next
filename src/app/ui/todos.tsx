@@ -1,18 +1,20 @@
 'use client';
 
-import { use } from 'react';
+import { useState, FC } from 'react';
+import { todoType } from "@/types/todoType";
 
-export default function Todos({
-    todos,
-  }: {
-    todos: Promise<{ id: number; title: string, completed: boolean, created_at: Date, update_at: Date }[]>
-  }) {
+interface Props {
+  todos: todoType[];
+}
 
-  const todo_items = use(todos);
+const Todos: FC<Props> = ({ todos }) => {
+  
+  // State to manage the list of todo items
+  const [todoItems, setTodoItems] = useState<todoType[]>(todos);
 
   return (
     <ul>
-      {todo_items.map((item) => (
+      {todoItems.map((item) => (
         <li key={item.id} className="py-1">
           <span className="text-lg mr-2">{item.title}</span>
           <span className="text-sm text-gray-500">{item.completed ? "Completed" : "Not Completed"}</span>
@@ -21,3 +23,5 @@ export default function Todos({
     </ul>
   );
 };
+
+export default Todos;

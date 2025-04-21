@@ -1,9 +1,9 @@
-import { db } from "@/db/drizzle";
 import Todos from "@/app/ui/todos";
 import Form from "@/app/ui/todo-form";
+import { getAll } from "@/actions/todoActions";
 
 // Get all todo items from the database
-const allTodos = await db.query.todos.findMany();
+const allTodos = await getAll();
 
 // Transform the data to match the expected Promise type
 const transformedTodos = allTodos.map(todo => ({
@@ -25,7 +25,7 @@ export default function Home() {
           <Form />
 
           <ul className="text-left mt-8">
-            <Todos todos={Promise.resolve(transformedTodos)} />
+            <Todos todos={transformedTodos} />
           </ul>
         </div>
       </div>

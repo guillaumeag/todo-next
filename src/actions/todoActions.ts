@@ -4,6 +4,13 @@ import { db } from "@/db/drizzle";
 import { todos } from "@/db/schema/todos";
 import { revalidatePath } from 'next/cache'
 
+export const getAll = async () => {
+  // Get all todo items from the database
+  const allTodos = await db.query.todos.findMany();
+
+  return allTodos;
+};
+
 export async function createTodo(formData: FormData) {
   
   // Build a todo object
