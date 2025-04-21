@@ -21,8 +21,7 @@ const Todos: FC<Props> = ({ todos }) => {
     <ul>
       {todos.map((item) => (
         <li key={item.id} className="py-1">
-          <span className="text-lg mr-2">{item.title}</span>
-          <span className="text-sm text-gray-500 mr-2">{item.completed ? "Completed" : "Not Completed"}</span>
+          <span className={`text-lg mr-2 ${item.completed ? 'line-through decoration-2' : '' }`}>{item.title}</span>
           <button
             onClick={() => handleDelete(item.id)}
             className="bg-red-400 w-16 text-red-50 p-1 cursor-pointer rounded-full text-sm"
