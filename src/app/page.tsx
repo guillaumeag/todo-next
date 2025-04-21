@@ -1,9 +1,6 @@
 import { db } from "@/db/drizzle";
 import Todos from "@/app/ui/todos";
 
-import { todos } from '@/db/schema/todos';
-
-// const data = db.select().from(todos);
 const data = db.query.todos.findMany();
 
 export default function Home() {
