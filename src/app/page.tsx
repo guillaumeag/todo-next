@@ -1,5 +1,5 @@
 import { db } from "@/db/drizzle";
-import { todos } from "@/db/schema";
+import { todos } from "@/db/schema/todos";
 import Todos from "@/app/ui/todos";
 
 const data = db.select().from(todos);
