@@ -1,5 +1,6 @@
 import { db } from "@/db/drizzle";
 import Todos from "@/app/ui/todos";
+import Form from "@/app/ui/todo-form";
 
 // Get all todo items from the database
 const allTodos = await db.query.todos.findMany();
@@ -21,6 +22,8 @@ export default function Home() {
           <h1 className="text-6xl font-black uppercase py-4">Todo Next</h1>
           <p className="text-current/80">This is a todo list app using Next.js</p>
           
+          <Form />
+
           <ul className="text-left mt-8">
             <Todos todos={Promise.resolve(transformedTodos)} />
           </ul>
