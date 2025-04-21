@@ -25,14 +25,14 @@ const Todos: FC<Props> = ({ todos }) => {
   return (
     <ul>
       {todos.map((item) => (
-        <li key={item.id} className="py-1">
+        <li key={item.id} className="py-2">
           <input
             type="checkbox"
-            className="inline-block align-middle mr-2 cursor-pointer size-4"
+            className="inline-block align-middle mr-2 cursor-pointer size-5"
             defaultChecked={item.completed}
             onChange={() => handleToggleCompleted(item.id, !item.completed)}
           />
-          <span className={`inline-block align-middle text-lg mr-2 ${item.completed ? 'line-through decoration-2' : '' }`}>{item.title}</span>
+          <span className={`inline-block align-middle text-xl mr-2 ${item.completed ? 'line-through decoration-2' : '' }`}>{item.title}</span>
           <button
             onClick={() => handleDelete(item.id)}
             className="inline-block align-middle text-red-200 hover:text-red-500 cursor-pointer"
