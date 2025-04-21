@@ -33,3 +33,11 @@ export async function deleteTodo(id: number) {
   // Revalidate the path to refresh the data
   revalidatePath("/");
 };
+
+export async function completeTodo(id: number, completed: boolean) {
+  // Delete todo item from the database using its id
+  const todo = await db.update(todos).set({completed: completed}).where(eq(todos.id, id));
+  
+  // Revalidate the path to refresh the data
+  revalidatePath("/");
+};
